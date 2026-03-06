@@ -6,12 +6,12 @@
 
 ```mermaid
 flowchart TD
-  Q[User input] -->|Normal chat| N[LLM chat only]
-  Q -->|@doc mention| R[Resource flow\n(docs://...)]
-  Q -->|/command| P[Prompt flow\n(get_prompt)]
+  Q[User input] -->|"Normal chat"| N[LLM chat only]
+  Q -->|"@doc mention"| R["Resource flow (docs://...)"]
+  Q -->|"/command"| P["Prompt flow (get_prompt)"]
 
-  R --> C1[Insert doc content\ninto LLM context]
-  P --> C2[Insert prompt messages\ninto conversation]
+  R --> C1["Insert doc content into LLM context"]
+  P --> C2["Insert prompt messages into conversation"]
   N --> L[LLM]
   C1 --> L
   C2 --> L
