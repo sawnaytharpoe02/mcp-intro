@@ -57,14 +57,17 @@ Transport ဆိုတာ “Client ↔ Server ဆက်သွယ်ရေး ch
 ## Mermaid diagram (High-level mental model)
 
 ```mermaid
-flowchart LR
-  U[User] -->|type query| CLI[CLI App\n(main.py + core/*)]
-  CLI -->|chat + tool schema| LLM[LLM Provider\n(OpenRouter/OpenAI compatible)]
+flowchart TB
+  U[User] -->|type query| CLI["CLI App (main.py + core/*)"]
+  CLI -->|chat + tool schema| LLM["LLM Provider (OpenRouter/OpenAI)"]
   LLM -->|tool calls| CLI
-  CLI -->|list_tools / call_tool| C[MCPClient\n(mcp_client.py)]
-  C -->|stdio| S[MCP Server\n(mcp_server.py)]
-  S -->|tool result| C -->|result| CLI -->|final answer| U
+  CLI -->|list_tools / call_tool| C["MCPClient (mcp_client.py)"]
+  C -->|stdio| S["MCP Server (mcp_server.py)"]
+  S -->|tool result| C
+  C -->|result| CLI
+  CLI -->|final answer| U
 ```
+
 
 နောက်စာမျက်နှာမှာ ဒီ project architecture ကို diagram/flow အနေနဲ့ရှင်းမယ်။
 
